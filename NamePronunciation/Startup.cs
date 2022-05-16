@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -49,7 +50,7 @@ namespace NamePronunciation
         private void RegisterConnectionSources(IServiceCollection services)
         {
             var contextstring = Configuration.GetConnectionString("ContextConnection");
-            //services.AddDbContext<Context>(options => options.Use(contextstring));
+            services.AddDbContext<Context>(options => options.UseSqlServer(contextstring));
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

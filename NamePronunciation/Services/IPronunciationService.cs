@@ -7,9 +7,12 @@ namespace NamePronunciation.Services
 {
     public interface IPronunciationService
     {
-        public string GetStandardPronunciation(string Name);
+        public void GetStandardPronunciation(string Name);
         public string GetPhoneticsforName(string Name);
-        
+        public void GetcustomAudioFileandSave(string input);
+        public void GetExistingPronunciation(string Name);
+
+
 
     }
 }

@@ -22,32 +22,27 @@ namespace NamePronunciation.Controllers
         // GET: api/<NamePronunciation>
         
         [HttpGet("{Name}")]
-        public string GetNameforStandardPronunciation(string Name)
-        {
-            return pronunciationService.GetStandardPronunciation(Name);
-        }
-        [HttpGet("{Name}")]
         public string GetPhoneticsforStandardPronunciation(string Name)
         {
             return pronunciationService.GetPhoneticsforName(Name);
         }
 
         // POST api/<NamePronunciation>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("{Name}")]
+        public void GetExistingPronunciation(string Name)
         {
+            pronunciationService.GetExistingPronunciation(Name);
+        }
+        [HttpGet("{Name}")]
+        public void GetcustomAudioFileandSave(string Name)
+        {
+            pronunciationService.GetcustomAudioFileandSave(Name);
+        }
+        [HttpGet("{Name}")]
+        public void GetStandardPronunciation(string Name)
+        {
+            pronunciationService.GetStandardPronunciation(Name);
         }
 
-        // PUT api/<NamePronunciation>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<NamePronunciation>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
